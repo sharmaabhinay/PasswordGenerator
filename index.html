@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Generator</title>
+    <style>
+        #parent {
+            background-color: silver;
+            display: inline-block;
+            padding: 2rem;
+            
+        }
+
+        input {
+            width: 13rem;
+            height: 2.3em;
+            margin-bottom: 1em;
+            font-size: 1.2em;
+            padding: 0px 1em;
+        }
+
+        button {
+            border: none;
+            background-color: brown;
+            padding: 10px 1rem;
+            color: white;
+        }
+
+        button:hover {
+            background-color: green;
+        }#icon{
+            transform: translateX(-22px);
+            cursor: pointer;
+        }marquee{
+            opacity: 0.5;
+        }
+        @media (max-width:380px){
+            #parent{
+                padding: 2rem 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <div id="parent">
+            <h2 id="heading">PASSWORD GENERATOR</h2>
+            <input type="text" placeholder="Generated Password" id="input"><span onclick="copyPassword()"><i class="fa-solid fa-copy" id="icon"></i></span><br>
+            <button id="button" onclick="generatePassword()">Generate Password</button>
+        </div>
+    </center>
+    <marquee behavior="" direction="">Designed by Abhinay Sharma</marquee>
+
+    <script>
+        let displayP = document.getElementById('input');
+        let icon = document.getElementById('icon')
+
+        function generatePassword() {
+            let chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ`~!@#%^&*()-_=+\\|]}[{/?><";
+            let length = 12; // You can change the length of the password
+
+            let password = "";
+            for (let i = 0; i < length; i++) {
+                let randomIndex = Math.floor(Math.random() * chars.length);
+                password += chars.charAt(randomIndex);
+            }
+
+            displayP.value = password;
+        }function copyPassword(){
+            displayP.select();
+            document.execCommand("copy");
+            alert('password copied');
+            input.value = "";
+        }
+    </script>
+    <script src="https://kit.fontawesome.com/763962caf7.js" crossorigin="anonymous"></script>
+</body>
+</html>
